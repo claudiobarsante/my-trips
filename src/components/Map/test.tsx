@@ -7,7 +7,7 @@ describe('<Map/>', () => {
 
     screen.logTestingPlaygroundURL(); //generate a url with the map
 
-    //to get this query click on the Leaflet link under the map rendered on the Testing Playground
+    // -- to get this query click on the Leaflet link under the map rendered on the Testing Playground
     expect(
       screen.getByRole('link', {
         name: /a js library for interactive maps/i

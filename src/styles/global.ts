@@ -2,9 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 :root {
-    --highlight: #e20e8d;
-    --background: #030518;
-    --white: #eeeeee;
+    --color-highlight: #e20e8d;
+    --color-background: #030518;
+    --color-white: #eeeeee;
     --container: 100rem;
     --small: 1.5rem;
     --medium: 3rem;
@@ -23,8 +23,8 @@ html {
 
 html,body, #__next{
  height: 100%;
-    background: var(--background);
-    color: var(--white);
+    background: var(--color-background);
+    color: var(--color-white);
 }
 
 body {
@@ -38,7 +38,7 @@ p,a {
   }
 
   a {
-    color: var(--highlight);
+    color: var(--color-highlight);
   }
 
 `;

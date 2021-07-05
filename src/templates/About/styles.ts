@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const Content = styled.section`
-  text-align: center;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
   flex-direction: column;
+
   height: 100vh;
-  max-width: var(--container);
   margin: auto;
+  max-width: var(--container);
+  text-align: center;
 `;
 
 export const Heading = styled.h1`
