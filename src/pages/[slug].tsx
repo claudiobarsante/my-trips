@@ -1,3 +1,4 @@
+import { GetPagesQuery } from 'graphql/genereted/graphql';
 import { GET_PAGES, GET_PAGE_BY_SLUG } from 'graphql/queries';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/dist/client/router';
@@ -18,8 +19,14 @@ getStaticPaths => generate urls in build time
 getStaticProps => get data to the page (props) in build time - static
 getServerSideProps => get data to the page (props) in runtime - every request
 */
+
+/*
+To generate queries types install GraphQL Code Generator and follow the steps
+*/
 export async function getStaticPaths() {
-  const { pages } = await client.request(GET_PAGES, { first: 3 });
+  const { pages } = await client.request<GetPagesQuery>(GET_PAGES, {
+    first: 3
+  });
 
   const paths = pages.map(({ slug }) => ({
     params: { slug }
