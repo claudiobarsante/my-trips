@@ -1,7 +1,8 @@
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, MapConsumer } from 'react-leaflet';
 import { useRouter } from 'next/dist/client/router';
 
-//import {Container} from './styles';
+import * as S from './styles';
+
 type Place = {
   id: string;
   name: string;
@@ -38,33 +39,51 @@ const MAPBOX_STYLEID = process.env.NEXT_PUBLIC_MAPBOX_STYLEID;
 const Map = ({ places }: MapProps) => {
   const router = useRouter();
   return (
-    <MapContainer
-      center={[0, 0]}
-      zoom={3}
-      style={{ height: '100%', width: '100%' }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+    <S.MapWrapper>
+      <MapContainer
+        center={[0, 0]}
+        zoom={3}
+        minZoom={3}
+        maxBounds={[
+          [-180, 180],
+          [180, -180]
+        ]}
+        style={{ height: '100%', width: '100%' }}
+      >
+        <MapConsumer>
+          {(map) => {
+            const width =
+              window.innerWidth ||
+              document.documentElement.clientWidth ||
+              document.body.clientWidth;
 
-      {places?.map(({ id, slug, name, location }) => {
-        const { latitude, longitude } = location;
+            if (width < 768) map.setMinZoom(2);
+            return null;
+          }}
+        </MapConsumer>
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
 
-        return (
-          <Marker
-            key={`place-${id}`}
-            position={[latitude, longitude]}
-            title={name}
-            eventHandlers={{
-              click: () => {
-                router.push(`/place/${slug}`);
-              }
-            }}
-          />
-        );
-      })}
-    </MapContainer>
+        {places?.map(({ id, slug, name, location }) => {
+          const { latitude, longitude } = location;
+
+          return (
+            <Marker
+              key={`place-${id}`}
+              position={[latitude, longitude]}
+              title={name}
+              eventHandlers={{
+                click: () => {
+                  router.push(`/place/${slug}`);
+                }
+              }}
+            />
+          );
+        })}
+      </MapContainer>
+    </S.MapWrapper>
   );
 };
 
