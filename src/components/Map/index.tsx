@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, MapConsumer } from 'react-leaflet';
 import { useRouter } from 'next/dist/client/router';
 
 import * as S from './styles';
+import L from 'leaflet';
 
 type Place = {
   id: string;
@@ -17,6 +18,12 @@ export type MapProps = {
   places?: Place[];
 };
 
+const markerIcon = new L.Icon({
+  iconUrl: 'img/icon-192.png',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
 const MAPBOX_API_KEY = process.env.NEXT_PUBLIC_MAPBOX_API_KEY;
 const MAPBOX_USERID = process.env.NEXT_PUBLIC_MAPBOX_USERID;
 const MAPBOX_STYLEID = process.env.NEXT_PUBLIC_MAPBOX_STYLEID;
@@ -74,6 +81,7 @@ const Map = ({ places }: MapProps) => {
               key={`place-${id}`}
               position={[latitude, longitude]}
               title={name}
+              icon={markerIcon}
               eventHandlers={{
                 click: () => {
                   router.push(`/place/${slug}`);
