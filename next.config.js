@@ -7,9 +7,6 @@ module.exports = withPWA({
     dest: 'public',
     disable: !isProd
   },
-  future: {
-    webpack5: true
-  },
 
   images: {
     domains: ['media.graphcms.com'] // it's not necessary to use http. Get address from Graph cms stored images
