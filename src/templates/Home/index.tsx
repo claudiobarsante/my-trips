@@ -17,15 +17,15 @@ export default function HomeTemplate({ places }: MapProps) {
       <NextSeo
         title="My Trips"
         description="A simple project to show in a map the places that I went and show more informations and photos when clicked."
-        canonical="https://my-trips.willianjusten.com.br"
+        canonical="https://my-trips-claudiobarsante.netlify.app/"
         openGraph={{
-          url: 'https://my-trips.willianjusten.com.br',
+          url: 'https://my-trips-claudiobarsante.netlify.app/',
           title: 'My Trips',
           description:
             'A simple project to show in a map the places that I went and show more informations and photos when clicked.',
           images: [
             {
-              url: 'https://my-trips.willianjusten.com.br/img/cover.png',
+              url: 'https://my-trips-claudiobarsante.netlify.app/img/cover.png',
               width: 1280,
               height: 720,
               alt: 'My Trips'
