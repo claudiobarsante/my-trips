@@ -7,5 +7,14 @@ Open [https://my-trips-claudiobarsante.netlify.app/](https://my-trips-claudiobar
 
 
 
-## Todo
-I still have to add the description of the project and what I've learned
+## Description
+
+👨‍💻 Front-end: React, Next with Typescript
+
+🌟 Styles : Styled-Components
+
+🧩 CMS : graphcms
+
+📡 Api: GraphQL
+
+⚡ Tests : Testing Library , Jest
